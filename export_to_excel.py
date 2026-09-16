@@ -65,7 +65,11 @@ def export(db_path, out_path):
                 values.append(v)
             ws.append(values)
             row_count += 1
+
+
         # light header styling + reasonable column widths
+        ws.views.sheetView[0].showGridLines = True
+        bold_font = Font(bold=True)
         for col_idx, col_name in enumerate(columns, start=1):
             ws.cell(row=1, column=col_idx).font = ws.cell(row=1, column=col_idx).font.copy(bold=True)
             width = min(max(len(col_name) + 2, 12), 40)
